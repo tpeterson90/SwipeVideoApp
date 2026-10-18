@@ -48,6 +48,18 @@
             android:textSize="26sp"
             android:textStyle="bold" />
 
+<!--        Unique ID-->
+        <TextView
+            android:id="@+id/textVideoID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="5dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="5dp"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
 <!--        Description text view-->
         <TextView
             android:id="@+id/textVideoDescription"

@@ -16,10 +16,6 @@ import java.util.List;
 
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHolder>{
 
-    /**
-     *
-     * @param videoItems
-     */
     public VideoAdapter(List<VideoItem> videoItems) {
         this.videoItems = videoItems;
     }
@@ -44,8 +40,9 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
         return videoItems.size();
     }
 
+
     static class VideoViewHolder extends RecyclerView.ViewHolder{
-        TextView textVideoTitle1, textVideoDescription1;
+        TextView textVideoTitle1, textVideoDescription1, uniqueID1;
         VideoView videoView;
         ProgressBar progressBar;
 
@@ -57,6 +54,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
                 super(itemView);
                 videoView = itemView.findViewById(R.id.videoView);
                 textVideoTitle1 = itemView.findViewById(R.id.textVideoTitle);
+                uniqueID1 = itemView.findViewById(R.id.textVideoID);
                 textVideoDescription1 = itemView.findViewById(R.id.textVideoDescription);
                 progressBar = itemView.findViewById(R.id.videoProgressBar);
             }
@@ -70,6 +68,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
             void setVideoData(VideoItem videoItem){
                 textVideoTitle1.setText(videoItem.videoTitle); //sets text equal to video Title
                 textVideoDescription1.setText(videoItem.videoDescription); //sets text to video Description
+                uniqueID1.setText(videoItem.videoUniqueID); // sets a unique ID number for each video
                 videoView.setVideoPath(videoItem.videoURL); //places video in view from URL
 
                 /**
@@ -95,12 +94,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
                 /**
                  * Make sure to start playing video
                  */
-                    videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-                            mediaPlayer.start();
-                        }
-                    });
+                    videoView.setOnCompletionListener(mediaPlayer -> mediaPlayer.start());
 
 
 
